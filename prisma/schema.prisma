@@ -1,0 +1,130 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  id_cliente   Int     @id @default(autoincrement())
+  razon_social String  @db.VarChar(150)
+  rut          String  @unique @db.VarChar(20)
+  telefono     String? @db.VarChar(30)
+  email        String? @db.VarChar(150)
+  direccion    String? @db.VarChar(200)
+
+  equipos Equipo[]
+}
+
+model Equipo {
+  id_equipo          Int       @id @default(autoincrement())
+  id_cliente         Int
+  modelo             String    @db.VarChar(100)
+  linea_proceso      String    @db.VarChar(100)
+  estado_operativo   Boolean
+  fecha_instalacion  DateTime? @db.Date
+  proxima_mantencion DateTime? @db.Date
+
+  cliente        Cliente          @relation(fields: [id_cliente], references: [id_cliente])
+  ordenes        OrdenTrabajo[]
+  notificaciones Notificacion[]
+}
+
+/**
+ * ============ USUARIO / ROL ============
+ */
+
+model Usuario {
+  id_usuario    Int     @id @default(autoincrement())
+  nombre        String  @db.VarChar(100)
+  apellido      String  @db.VarChar(100)
+  email         String  @unique @db.VarChar(150)
+  telefono      String? @db.VarChar(30)
+  password_hash String  @db.VarChar(255)
+  activo        Boolean
+  primer_login  Boolean @default(true) // Indica si es el primer login del usuario
+
+  encuestas    EncuestaSatisfaccion[]
+  roles          UsuarioRol[]
+  ordenesCreadas OrdenTrabajo[] @relation("OT_Creador")
+}
+
+model Rol {
+  id_rol      Int     @id @default(autoincrement())
+  nombre      String  @db.VarChar(50)
+  descripcion String? @db.VarChar(200)
+
+  usuarios UsuarioRol[]
+}
+
+model UsuarioRol {
+  id_usuario Int
+  id_rol     Int
+
+  usuario Usuario @relation(fields: [id_usuario], references: [id_usuario])
+  rol     Rol     @relation(fields: [id_rol], references: [id_rol])
+
+  @@id([id_usuario, id_rol])
+}
+model EncuestaSatisfaccion {
+  id_encuesta      Int      @id @default(autoincrement())
+  id_usuario       Int
+  fecha_respuesta  DateTime @db.DateTime
+  puntaje_total    Int
+  positiva         Boolean
+  comentario       String?  @db.Text
+  usuario          Usuario  @relation(fields: [id_usuario], references: [id_usuario])
+}
+
+/**
+ * ============ OT / EVIDENCIA ============
+ */
+
+model OrdenTrabajo {
+  id_ot                Int       @id @default(autoincrement())
+  id_equipo            Int
+  tipo_ot              String    @db.VarChar(30)
+  prioridad            String    @db.VarChar(20)
+  estado               String    @db.VarChar(30)
+  fecha_creacion       DateTime  @db.DateTime
+  fecha_programada     DateTime? @db.DateTime
+  fecha_cierre         DateTime? @db.DateTime
+  descripcion_sintoma  String?   @db.Text
+  trabajo_realizado    String?   @db.Text
+  repuestos_utilizados String?   @db.Text
+  id_creador           Int?      
+
+  equipo     Equipo        @relation(fields: [id_equipo], references: [id_equipo])
+  creador    Usuario?      @relation("OT_Creador", fields: [id_creador], references: [id_usuario], onDelete: SetNull)
+  evidencias EvidenciaOT[]
+}
+
+
+model EvidenciaOT {
+  id_evidencia Int      @id @default(autoincrement())
+  id_ot        Int
+  tipo         String   @db.VarChar(30)
+  url_archivo  String   @db.VarChar(255)
+  descripcion  String?  @db.Text
+  fecha_hora   DateTime @db.DateTime
+
+  ot OrdenTrabajo @relation(fields: [id_ot], references: [id_ot])
+}
+
+model Notificacion {
+  id_notificacion Int      @id @default(autoincrement())
+  id_equipo       Int
+  fecha_objetivo  DateTime @db.Date
+  fecha_creacion  DateTime @default(now()) @db.DateTime
+  visto           Boolean  @default(false)
+
+  equipo Equipo @relation(fields: [id_equipo], references: [id_equipo])
+}

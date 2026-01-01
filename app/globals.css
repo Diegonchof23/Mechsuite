@@ -1,0 +1,424 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #0024ff;
+  --color-primary-dark: #0017b3;
+  --color-bg-overlay: rgba(0, 0, 0, 0.55);
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Animaciones personalizadas */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.bg-global {
+  background-image: 
+    linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 0, 0, 0.65) 100%
+    ),
+    url('/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Mejoras para tablas */
+table {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  overflow: visible;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+table thead {
+  background: linear-gradient(135deg, #0024ff 0%, #0017b3 100%);
+}
+
+table thead th {
+  color: white;
+  font-weight: 600;
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+table thead th:first-child {
+  border-top-left-radius: 8px;
+}
+
+table thead th:last-child {
+  border-top-right-radius: 8px;
+}
+
+table tbody tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  transition: background-color 0.15s ease;
+}
+
+table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+
+table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+}
+
+table tbody tr:hover {
+  background-color: rgba(0, 36, 255, 0.06);
+}
+
+table tbody td {
+  padding: 12px 16px;
+  color: #1f2937;
+  background: rgba(255, 255, 255, 0.95);
+  vertical-align: middle;
+}
+
+/* Alineación específica para celdas centradas */
+table thead th[class*="text-center"],
+table tbody td[class*="text-center"] {
+  text-align: center !important;
+}
+
+table thead th[class*="text-left"],
+table tbody td[class*="text-left"] {
+  text-align: left !important;
+}
+
+/* Mejoras para botones */
+button, .btn {
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+button:hover, .btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:active, .btn:active {
+  transform: translateY(0);
+}
+
+/* Botones primarios (azul) */
+button[style*="background-color: rgb(0, 36, 255)"],
+button[style*="backgroundColor: rgb(0, 36, 255)"],
+.bg-blue-600,
+.bg-blue-500 {
+  background: linear-gradient(135deg, #0024ff 0%, #0017b3 100%) !important;
+  box-shadow: 0 2px 8px rgba(0, 36, 255, 0.3);
+}
+
+button[style*="background-color: rgb(0, 36, 255)"]:hover,
+button[style*="backgroundColor: rgb(0, 36, 255)"]:hover,
+.bg-blue-600:hover,
+.bg-blue-500:hover {
+  box-shadow: 0 4px 16px rgba(0, 36, 255, 0.5);
+  filter: brightness(1.1);
+}
+
+/* Mejoras para tarjetas/paneles */
+.bg-white {
+  background: rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.rounded, .rounded-lg {
+  border-radius: 12px !important;
+}
+
+/* Mejoras para inputs y selects */
+input, select, textarea {
+  transition: all 0.2s ease;
+  border-radius: 6px;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #0024ff;
+  box-shadow: 0 0 0 3px rgba(0, 36, 255, 0.1);
+}
+
+/* Mejoras para modales */
+.fixed.inset-0 {
+  backdrop-filter: blur(4px);
+}
+
+/* KPI Cards - Mejoras específicas */
+.kpi-card {
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.kpi-title {
+  color: #6b7280;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.kpi-value {
+  color: #0024ff;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+/* Mejoras para la navbar */
+nav {
+  box-shadow: 0 2px 12px rgba(0, 36, 255, 0.3);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 40;
+}
+
+nav a {
+  transition: all 0.2s ease;
+  position: relative;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Títulos en páginas - blancos para mejor contraste */
+h1, h2, h3 {
+  color: white !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Títulos en modales/paneles blancos en negro */
+.bg-white h1, 
+.bg-white h2, 
+.bg-white h3,
+div[style*="rgba(255, 255, 255"] h1,
+div[style*="rgba(255, 255, 255"] h2,
+div[style*="rgba(255, 255, 255"] h3 {
+  color: #1f2937 !important;
+  text-shadow: none !important;
+}
+
+/* Barras de búsqueda mejoradas */
+input[type="text"][placeholder*="Buscar"],
+input[placeholder*="Buscar"] {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #1f2937 !important;
+  padding: 10px 16px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  max-width: 600px !important;
+  width: 100% !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+input[type="text"][placeholder*="Buscar"]::placeholder,
+input[placeholder*="Buscar"]::placeholder {
+  color: #9ca3af !important;
+}
+
+/* Contenedor de búsqueda centrado */
+.search-container,
+div:has(> input[placeholder*="Buscar"]) {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Z-index para dropdowns y notificaciones */
+details[open] > div,
+.notification-dropdown {
+  z-index: 9999 !important;
+  position: relative;
+}
+
+/* Mejorar dropdown del usuario */
+details > summary + div {
+  z-index: 9999 !important;
+}
+
+/* Login mejorado */
+.login-container {
+  background: rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: blur(10px);
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Encuesta más ancha */
+.encuesta-modal {
+  max-width: 900px !important;
+}
+
+/* ========== RESPONSIVE STYLES ========== */
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  /* Background más claro en móvil */
+  .bg-global,
+  div[style*="background.png"] {
+    background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.55) 100%), url('/background.png') !important;
+  }
+
+  /* Padding reducido en móvil */
+  .app-main {
+    padding: 16px 12px 24px;
+  }
+
+  /* Títulos más pequeños */
+  h1 {
+    font-size: 1.75rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+  }
+
+  h3 {
+    font-size: 1.25rem !important;
+  }
+
+  /* Botones más grandes para táctil (excepto en tarjetas) */
+  button:not(.mobile-card-actions button), .btn {
+    min-height: 44px;
+    padding: 12px 16px;
+  }
+
+  /* Botones en tarjetas móviles más compactos */
+  .mobile-card-actions button {
+    min-height: 40px;
+    font-size: 0.875rem;
+  }
+
+  /* Inputs más grandes */
+  input, select, textarea {
+    min-height: 44px;
+    font-size: 16px !important;
+  }
+
+  /* Modales ocupan más espacio */
+  .fixed > div {
+    max-width: 95% !important;
+    margin: 0 auto;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .app-content {
+    max-width: 100%;
+    padding: 0 24px;
+  }
+}
+
+/* Cards móviles para tablas */
+.mobile-cards {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-cards {
+    display: flex !important;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.mobile-card {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 36, 255, 0.1);
+}
+
+.mobile-card-header {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #0024FF;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(0, 36, 255, 0.2);
+}
+
+.mobile-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px 0;
+  gap: 12px;
+}
+
+.mobile-card-label {
+  font-weight: 600;
+  color: #6b7280;
+  font-size: 0.875rem;
+  min-width: 100px;
+  flex-shrink: 0;
+}
+
+.mobile-card-value {
+  color: #1f2937;
+  font-size: 0.875rem;
+  text-align: right;
+  flex: 1;
+  word-break: break-word;
+}
+
+.mobile-card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+

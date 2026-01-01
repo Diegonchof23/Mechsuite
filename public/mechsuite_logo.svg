@@ -1,0 +1,25 @@
+<svg width="260" height="80" viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .text { font-family: 'Segoe UI', sans-serif; font-weight: 700; fill: #FFFFFF; }
+  </style>
+
+  <!-- Shield (thicker lines) -->
+  <path d="M40 10C40 10 20 15 20 25V45C20 65 40 70 40 70C40 70 60 65 60 45V25C60 15 40 10 40 10Z"
+        stroke="#FFFFFF" stroke-width="5" fill="none"/>
+
+  <!-- Gear (thicker lines) -->
+  <g transform="translate(40, 38)">
+    <circle cx="0" cy="0" r="10" stroke="#FFFFFF" stroke-width="5" fill="none"/>
+    <path d="M0 -18 L0 -27 M0 18 L0 27 M-18 0 L-27 0 M18 0 L27 0 
+             M-13 -13 L-20 -20 M13 -13 L20 -20 M-13 13 L-20 20 M13 13 L20 20"
+          stroke="#FFFFFF" stroke-width="5"/>
+  </g>
+
+  <!-- Checkmark (thicker) -->
+  <path d="M30 40 L38 50 L52 30"
+        stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Text -->
+  <text x="85" y="38" class="text" font-size="28">Mech</text>
+  <text x="85" y="65" class="text" font-size="28">Suite</text>
+</svg>

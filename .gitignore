@@ -1,0 +1,24 @@
+# build / cache
+.next/
+out/
+dist/
+
+# deps
+node_modules/
+
+# env / secrets
+.env
+.env.*
+
+# logs
+*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+
+# Si guardas evidencias subidas por usuarios, no deben versionarse
+public/evidencias/
