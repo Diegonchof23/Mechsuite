@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MechSuite
 
-## Getting Started
+Sistema web para la gestión y control de mantenciones de equipos industriales, orientado a optimizar el registro de clientes, equipos, órdenes de trabajo y la trazabilidad técnica dentro de un entorno de taller.
 
-First, run the development server:
+Proyecto desarrollado como parte del proceso de titulación de la carrera de **Ingeniería en Informática**.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## Tecnologías utilizadas
+
+* **Next.js (App Router)**
+* **React**
+* **TypeScript**
+* **Node.js**
+* **Prisma ORM**
+* **Base de datos relacional (MySQL / PostgreSQL)**
+* **Tailwind CSS**
+* **Git / GitHub**
+
+---
+
+## Estructura del proyecto
+
 ```
+mechsuite/
+├── app/                # Rutas y vistas (Next.js App Router)
+├── components/         # Componentes reutilizables
+├── lib/                # Lógica compartida y utilidades
+├── prisma/             # Esquema y migraciones de base de datos
+├── public/             # Archivos públicos
+├── types/              # Definiciones de tipos
+├── .env.example        # Variables de entorno de referencia
+├── package.json
+└── README.md
+```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Requisitos previos
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* Node.js 18 o superior
+* npm o yarn
+* Base de datos compatible (MySQL o PostgreSQL)
+* Git
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Instalación y ejecución
 
-To learn more about Next.js, take a look at the following resources:
+1. Clonar el repositorio
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```
+   git clone https://github.com/diegof/mechsuite.git
+   cd mechsuite
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Instalar dependencias
 
-## Deploy on Vercel
+   ```
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Crear archivo de entorno
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```
+   cp .env.example .env
+   ```
+
+4. Ejecutar migraciones
+
+   ```
+   npx prisma migrate deploy
+   ```
+
+5. Iniciar el servidor de desarrollo
+
+   ```
+   npm run dev
+   ```
+
+La aplicación estará disponible en:
+[http://localhost:3000](http://localhost:3000)
+
+---
+
+## Funcionalidades principales
+
+* Gestión de clientes
+* Administración de equipos
+* Registro y seguimiento de órdenes de trabajo
+* Historial técnico de intervenciones
+* Gestión de usuarios y control de acceso
+
+---
+
+## Estado del proyecto
+
+Proyecto funcional desarrollado con fines académicos y demostrativos.
+
+---
+
+## Autores
+
+* Diego Fuenzalida 
+* Alexis Roco
+* Rodrigo Valenzuela
+Ingeniería en Informática – INACAP
+
