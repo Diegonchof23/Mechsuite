@@ -1,107 +1,108 @@
 # MechSuite
 
-Sistema web para la gestión y control de mantenciones de equipos industriales, orientado a optimizar el registro de clientes, equipos, órdenes de trabajo y la trazabilidad técnica dentro de un entorno de taller.
-
-Proyecto desarrollado como parte del proceso de titulación de la carrera de **Ingeniería en Informática**.
+Sistema web de gestión operacional orientado a la administración de mantenciones de equipos industriales, desarrollado como proyecto de título para la carrera de Ingeniería en Informática.
 
 ---
 
-## Tecnologías utilizadas
+## Descripción
 
-* **Next.js (App Router)**
-* **React**
-* **TypeScript**
-* **Node.js**
-* **Prisma ORM**
-* **Base de datos relacional (MySQL / PostgreSQL)**
-* **Tailwind CSS**
-* **Git / GitHub**
+MechSuite es una aplicación web diseñada para digitalizar y centralizar la gestión de mantenciones en un entorno de taller técnico industrial.  
+El sistema permite registrar clientes, equipos y órdenes de trabajo, manteniendo trazabilidad completa de las intervenciones realizadas y facilitando el acceso a información técnica de forma estructurada.
 
----
-
-## Estructura del proyecto
-
-```
-mechsuite/
-├── app/                # Rutas y vistas (Next.js App Router)
-├── components/         # Componentes reutilizables
-├── lib/                # Lógica compartida y utilidades
-├── prisma/             # Esquema y migraciones de base de datos
-├── public/             # Archivos públicos
-├── types/              # Definiciones de tipos
-├── .env.example        # Variables de entorno de referencia
-├── package.json
-└── README.md
-```
----
-
-## Requisitos previos
-
-* Node.js 18 o superior
-* npm o yarn
-* Base de datos compatible (MySQL o PostgreSQL)
-* Git
-
----
-
-## Instalación y ejecución
-
-1. Clonar el repositorio
-
-   ```
-   git clone https://github.com/diegof/mechsuite.git
-   cd mechsuite
-   ```
-
-2. Instalar dependencias
-
-   ```
-   npm install
-   ```
-
-3. Crear archivo de entorno
-
-   ```
-   cp .env.example .env
-   ```
-
-4. Ejecutar migraciones
-
-   ```
-   npx prisma migrate deploy
-   ```
-
-5. Iniciar el servidor de desarrollo
-
-   ```
-   npm run dev
-   ```
-
-La aplicación estará disponible en:
-[http://localhost:3000](http://localhost:3000)
+El proyecto nace a partir de una problemática real observada en talleres industriales, donde los procesos de mantención se gestionan de forma manual o dispersa, dificultando el control, el historial técnico y la toma de decisiones.
 
 ---
 
 ## Funcionalidades principales
 
-* Gestión de clientes
-* Administración de equipos
-* Registro y seguimiento de órdenes de trabajo
-* Historial técnico de intervenciones
-* Gestión de usuarios y control de acceso
+- Registro y administración de clientes.
+- Gestión de equipos asociados a cada cliente.
+- Creación, seguimiento y cierre de órdenes de trabajo.
+- Trazabilidad histórica de mantenciones e intervenciones técnicas.
+- Control de acceso basado en roles (usuarios administrativos y técnicos).
+- Centralización de información técnica asociada a cada equipo.
 
 ---
 
-## Estado del proyecto
+## Tecnologías utilizadas
 
-Proyecto funcional desarrollado con fines académicos y demostrativos.
+- **Frontend / Backend:** Next.js  
+- **Lenguaje:** TypeScript  
+- **Base de datos:** MariaDB  
+- **ORM:** Prisma  
+- **Control de versiones:** Git y GitHub  
+
+El sistema fue desarrollado utilizando una arquitectura modular, separando responsabilidades para facilitar el mantenimiento y la escalabilidad.
 
 ---
 
-## Autores
+## Arquitectura del sistema
 
-* Diego Fuenzalida 
-* Alexis Roco
-* Rodrigo Valenzuela
-Ingeniería en Informática – INACAP
+MechSuite está estructurado como una aplicación web full stack:
 
+- **Capa de presentación:** interfaz web desarrollada con Next.js.
+- **Capa de lógica:** manejo de reglas de negocio, validaciones y control de acceso.
+- **Capa de datos:** base de datos relacional en MariaDB, con integridad referencial asegurada mediante Prisma ORM.
+
+Esta arquitectura permite mantener coherencia en la información y facilita la trazabilidad de los procesos operativos del taller.
+
+---
+
+## Modelo de datos
+
+El modelo de datos está orientado a la normalización y a la trazabilidad de la información.  
+Las principales entidades del sistema son:
+
+- Cliente  
+- Equipo  
+- Orden de Trabajo  
+- Usuario  
+- Rol  
+
+Las relaciones entre entidades permiten asociar clientes con múltiples equipos, registrar mantenciones históricas y controlar los accesos según el perfil del usuario.
+
+---
+
+## Pruebas y validación
+
+El sistema fue validado mediante **testing funcional**, considerando:
+
+- Diseño y ejecución de casos de prueba.
+- Validación de requerimientos funcionales.
+- Revisión de flujos críticos (creación, actualización y cierre de órdenes de trabajo).
+- Verificación de control de accesos por rol.
+
+Estas pruebas permitieron asegurar el correcto funcionamiento del sistema en un contexto operativo real.
+
+---
+
+## Instalación y ejecución local
+
+Requisitos previos:
+- Node.js
+- Base de datos MariaDB
+
+Pasos generales:
+1. Clonar el repositorio.
+2. Instalar dependencias.
+3. Configurar variables de entorno para la conexión a la base de datos.
+4. Ejecutar migraciones de Prisma.
+5. Iniciar el servidor de desarrollo.
+
+*(Los detalles específicos de configuración pueden ajustarse según el entorno de ejecución.)*
+
+---
+
+## Contexto académico
+
+Este proyecto corresponde al **Proyecto de Título** de la carrera **Ingeniería en Informática**, desarrollado en el **Instituto Profesional INACAP, Sede Curicó**.
+
+El objetivo del proyecto fue aplicar los conocimientos adquiridos durante la formación académica en un sistema real, abordando análisis de requerimientos, diseño de arquitectura, modelamiento de datos, desarrollo de software y validación funcional.
+
+---
+
+## Autor
+
+Diego Fuenzalida  
+Egresado Ingeniería en Informática  
+INACAP – Sede Curicó
